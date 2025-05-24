@@ -1,11 +1,11 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, } from 'react-native';
-import Introduction from './Screen/Introduction';
+import Home from './Screen/Home';
 
 export default function App() {
   return (
       <SafeAreaView style={styles.container}>
-        <Introduction /> 
+        <Home /> 
       </SafeAreaView>
   );
 }

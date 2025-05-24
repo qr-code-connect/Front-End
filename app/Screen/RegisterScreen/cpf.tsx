@@ -27,7 +27,7 @@ export default function CpfRegister() {
       return;
     }
     setErroCpf('');
-    router.push('/Screen/Introduction');
+    router.push('/Screen/RegisterScreen/telefone');
   };
 
   const registerOnpress = () => {

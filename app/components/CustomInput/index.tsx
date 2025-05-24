@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 2,
     borderColor: '#ccc',
-    width: 370,
+    width: "100%",
     height: 58,
   },
 });

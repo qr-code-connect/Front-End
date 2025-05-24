@@ -4,7 +4,6 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Button } from 'react-native-paper';
 import CustomInput from '../../components/CustomInput';
 
 
@@ -26,7 +25,7 @@ const RegisterPass = () => {
   } else {
     setSenhaValida(true);
     setError('');
-    router.push('/Screen/RegisterScreen/finish'); // Altere para o destino correto
+    router.push('/Screen/Login'); // Altere para o destino correto
   }
 };
 
@@ -85,17 +84,8 @@ const RegisterPass = () => {
 
 
         <View style={styles.button}>
-        <CustomButton title="Entrar" onPress={handleSubmit} />
+        <CustomButton title="Criar conta" onPress={handleSubmit} />
       </View>
-      <Button
-        mode="contained"
-        onPress={handleSubmit}
-        style={[styles.button, { opacity: senha.trim().length < 6 || confirmSenha.trim().length < 6 || senha !== confirmSenha ? 0.5 : 1 }]} // Muda a opacidade
-        textColor="#000"
-        buttonColor="#fff"
-      >
-        Criar conta
-      </Button>
 
       <View style={styles.footer}>
         <Text style={styles.footerText}>Já tem uma conta? Faça login.</Text>
