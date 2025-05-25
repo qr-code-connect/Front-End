@@ -24,19 +24,21 @@ const goToRegister = () => {
       </View>
 
       <View style={styles.inputContainer}>
-        <CustomInput 
-        label='Email' 
-        placeholder='Ex: usuario@gmail.com' 
-        value={email} 
-        onChangeText={setSenha}
-        />
+          <CustomInput 
+      label='Email' 
+      placeholder='Ex: usuario@gmail.com' 
+      value={email} 
+      onChangeText={setEmail} // ✅ Corrigido
+    />
 
-        <CustomInput 
-        label='Senha' 
-        placeholder='**********' 
-        value={senha}  secureTextEntry 
-        onChangeText={setEmail}
-        />
+    <CustomInput 
+      label='Senha' 
+      placeholder='**********' 
+      value={senha} 
+      secureTextEntry 
+      onChangeText={setSenha} // ✅ Corrigido
+    />
+
         
         <TouchableOpacity style={styles.forgotPassword}>
           <Text style={styles.link}>Esqueceu a senha?</Text>

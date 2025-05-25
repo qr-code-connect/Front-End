@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import Patrocinio from '../../../assets/imagem/Patrocinio.jpg';
 
-export default function SponsorInput() {
+export default function SponsImage() {
   return (
     <View style={styles.container}> 
       <TouchableOpacity> 

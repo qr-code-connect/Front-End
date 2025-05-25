@@ -12,3 +12,4 @@ declare module '*.jpg' {
   const content: number;
   export default content;
 }
+declare module 'react-native-curved-bottom-bar';
