@@ -5,10 +5,11 @@ import { StyleSheet, Text, View } from 'react-native';
 
 type TitleProps = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
+  size?: number;  // aceita qualquer número opcionalmente
 }
 
-const Title: React.FC<TitleProps> = ({ title, subtitle }) => {
+const Title: React.FC<TitleProps> = ({ title, subtitle, size }) => {
   // Carregando as fontes Inter
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
@@ -16,33 +17,43 @@ const Title: React.FC<TitleProps> = ({ title, subtitle }) => {
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />; // Mostra uma tela de loading até a fonte carregar
+    return <AppLoading />;
   }
 
   return (
-    <View style={styles.container}> 
-      <Text style={[styles.title, { fontFamily: 'Inter_700Bold' }]}>{title}</Text>
-      <Text style={[styles.subtitle, { fontFamily: 'Inter_400Regular' }]}>{subtitle}</Text>
+    <View style={styles.container}>
+      <Text
+        style={[
+          styles.title,
+          { fontFamily: 'Inter_700Bold', fontSize: size ?? 34 }, // usa size ou 34 padrão
+        ]}
+      >
+        {title}
+      </Text>
+      {subtitle && (
+        <Text style={[styles.subtitle, { fontFamily: 'Inter_400Regular' }]}>
+          {subtitle}
+        </Text>
+      )}
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "flex-start",
+    justifyContent: 'flex-start',
     backgroundColor: '#000',
-    alignItems: "flex-start",
+    alignItems: 'flex-start',
     marginBottom: 30,
   },
   title: {
     color: 'white',
-    fontSize: 34,
-    fontWeight: '700', // Mesmo que a fonte bold já faz, pode manter
+    fontWeight: '700', // mantém a fonte bold
     marginBottom: 4,
   },
   subtitle: {
     color: '#CCCCCC',
-  }
+  },
 });
 
 export default Title;

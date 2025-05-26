@@ -12,13 +12,14 @@ const logout  = () => {
 router.push('/Screen/Login')
 }
 
-
+const RegisterBusines = () => {
+  router.push('/Screen/BusinessRegister')
+}
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
 
-        {/* Cabeçalho com título e botão de sair */}
         <View style={styles.header}>
           <Text style={styles.txt}>Meu perfil</Text>
           <TouchableOpacity style={styles.iconContainer} onPress={logout}>
@@ -34,8 +35,8 @@ router.push('/Screen/Login')
           </View>
         </View>
 
-        <InputProfile title="Configurações" />
-        <InputProfile title="Cadastre sua empresa" />
+        <InputProfile title="Meus ingressos" />
+        <InputProfile title="Cadastre sua empresa" onPress={RegisterBusines}/>
         <InputProfile title="Crie um evento" />
       </ScrollView>
 

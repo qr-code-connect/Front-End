@@ -1,66 +1,78 @@
 import { AntDesign, Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { router } from 'expo-router';
-import React, { useState } from 'react';
+import { router, usePathname } from 'expo-router';
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function BottomNavBar() {
-  const RouterForHome = () => {
-    router.push('/Screen/Home')
-  }
-   const RouterForUser = () => {
-    router.push('/Screen/User')
-  }
-  
+  const pathname = usePathname();
 
-  const [active, setActive] = useState('qr');
+  // Define a rota ativa com base na URL
+  const active = pathname.includes('/Screen/User')
+    ? 'profile'
+    : pathname.includes('/Screen/Home')
+    ? 'home'
+    : 'qr';
+
+  const RouterForHome = () => {
+    router.push('/Screen/Home');
+  };
+
+  const RouterForUser = () => {
+    router.push('/Screen/User');
+  };
+
+  const handleQrPress = () => {
+    router.push('/Screen/Qr'); // ou a rota correta do QR Code, se existir
+  };
 
   return (
-    <View style={styles.container}>
-      {/* Home */}
-      <TouchableOpacity style={styles.tab} onPress={() => setActive('home')}>
-        <MaterialIcons
-          name="home"
-          size={24}
-          color={active === 'home' ? '#fff' : '#888'}
-          onPress={RouterForHome}
-        />
-        <Text style={[styles.label, active === 'home' && styles.activeLabel]}>Home</Text>
-      </TouchableOpacity>
-
-
-      <TouchableOpacity
-        style={styles.qrButton}
-        onPress={() => setActive('qr')}
-      >
+    <>
+      {/* Botão QR flutuante */}
+      <TouchableOpacity style={styles.qrButton} onPress={handleQrPress}>
         <Ionicons
           name="qr-code-outline"
           size={28}
-          color={active === 'qr' ? '#000' : '#000'}
-          
+          color="#000"
         />
-        
       </TouchableOpacity>
       <Text style={[
-    styles.label,
-    styles.qrLabel,
-    active === 'qr' && styles.activeLabel
-  ]}>
+        styles.label,
+        styles.qrLabel,
+        active === 'qr' && styles.activeLabel
+      ]}>
         QR Code
       </Text>
 
-      {/* Profile */}
-      <TouchableOpacity style={styles.tab} onPress={() => setActive('profile')}>
-        <AntDesign
-          name="user"
-          size={24}
-          color={active === 'profile' ? '#fff' : '#888'}
-          onPress={RouterForUser}
-        />
-        <Text style={[styles.label, active === 'profile' && styles.activeLabel]}>
-          Profile
-        </Text>
-      </TouchableOpacity>
-    </View>
+      {/* Barra de navegação inferior */}
+      <View style={styles.container}>
+        {/* Home */}
+        <TouchableOpacity style={styles.tab} onPress={RouterForHome}>
+          <MaterialIcons
+            name="home"
+            size={24}
+            color={active === 'home' ? '#fff' : '#888'}
+          />
+          <Text style={[styles.label, active === 'home' && styles.activeLabel]}>
+            Home
+          </Text>
+        </TouchableOpacity>
+
+        {/* Espaço para o botão QR */}
+        <View style={styles.tab} />
+
+        {/* Profile */}
+        <TouchableOpacity style={styles.tab} onPress={RouterForUser}>
+          <AntDesign
+            name="user"
+            size={24}
+            color={active === 'profile' ? '#fff' : '#888'}
+          />
+          <Text style={[styles.label, active === 'profile' && styles.activeLabel]}>
+            Profile
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </>
   );
 }
 
@@ -74,6 +86,10 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     borderTopWidth: 0.3,
     borderTopColor: '#222',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   tab: {
     alignItems: 'center',
@@ -97,14 +113,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    top: -25,
+    bottom: 30,
     alignSelf: 'center',
     zIndex: 10,
     elevation: 5,
   },
   qrLabel: {
     position: 'absolute',
-    bottom: 18,
+    bottom: 10,
     alignSelf: 'center',
     fontSize: 12,
   },

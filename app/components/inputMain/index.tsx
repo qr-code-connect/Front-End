@@ -2,13 +2,17 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface Props {
   title: string;
-  onPress?: () => void;
+  onPress?: () => void; // A função de navegação vem de fora
+  isActive?: boolean;   // Para deixar o botão branco se estiver ativo
 }
 
-export default function InputMain({ title, onPress }: Props) {
+export default function InputMain({ title, onPress, isActive }: Props) {
   return (
     <View style={styles.Pad}>
-      <TouchableOpacity style={styles.container} onPress={onPress}>
+      <TouchableOpacity
+        style={[styles.container, isActive && styles.active]}
+        onPress={onPress}
+      >
         <Text style={styles.title}>{title}</Text>
       </TouchableOpacity>
     </View>
@@ -17,12 +21,15 @@ export default function InputMain({ title, onPress }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: "#ccc", // cor padrão
     borderRadius: 8,
     alignItems: "center",
     justifyContent: 'center',
     margin: 1,
     height: 70,
+  },
+  active: {
+    backgroundColor: "#fff", // fica branco se ativo
   },
   title: {
     color: "#000",
