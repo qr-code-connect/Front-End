@@ -25,7 +25,7 @@ const Title: React.FC<TitleProps> = ({ title, subtitle, size }) => {
       <Text
         style={[
           styles.title,
-          { fontFamily: 'Inter_700Bold', fontSize: size ?? 34 }, // usa size ou 34 padrão
+          { fontFamily: 'Inter_700Bold', fontSize: size ?? 34 },
         ]}
       >
         {title}

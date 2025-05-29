@@ -2,8 +2,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface Props {
   title: string;
-  onPress?: () => void; // A função de navegação vem de fora
-  isActive?: boolean;   // Para deixar o botão branco se estiver ativo
+  onPress?: () => void; 
+  isActive?: boolean;   
 }
 
 export default function InputMain({ title, onPress, isActive }: Props) {
@@ -21,7 +21,7 @@ export default function InputMain({ title, onPress, isActive }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ccc", // cor padrão
+    backgroundColor: "#ccc", 
     borderRadius: 8,
     alignItems: "center",
     justifyContent: 'center',
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     height: 70,
   },
   active: {
-    backgroundColor: "#fff", // fica branco se ativo
+    backgroundColor: "#fff", 
   },
   title: {
     color: "#000",

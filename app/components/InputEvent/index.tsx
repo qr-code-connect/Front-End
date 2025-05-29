@@ -1,37 +1,44 @@
+import { useRouter } from "expo-router";
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 interface Props {
   title: string;
+  type: string;
+  price: number;
+  date: string;
 }
 
-const InputEvent: React.FC<Props> = ({ title }) => {
+const InputEvent: React.FC<Props> = ({ title, type, price, date }) => {
+  const router = useRouter();
+
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.text}>{title}</Text>
-        
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+      onPress={() => router.push({ pathname: "/Screen/EventDetails/index", params: { title, type, price, date } })}
+      style={styles.container}
+    >
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.more}>mais sobre</Text>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    borderRadius: 10,
-    padding: 12,
-    marginVertical: 8,
-    alignItems: 'center',
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 20,
+    marginHorizontal: 20,
+    marginBottom: 15,
   },
-  button: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
   },
-  text: {
-    fontSize: 16,
-    color: '#000',
-    fontWeight: 'bold',
+  more: {
+    color: "blue",
+    textAlign: "right",
   },
 });
 

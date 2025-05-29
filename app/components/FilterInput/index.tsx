@@ -1,60 +1,47 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import { SafeAreaView, StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 
 interface Props {
   title: string;
+  value: string;
+  onChangeText: (text: string) => void;
 }
 
-const FilterInput: React.FC<Props> = ({ title }) => {
+const FilterInput: React.FC<Props> = ({ title, value, onChangeText }) => {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.filterRow}>
-        <View style={styles.container}>
-          <MaterialIcons name="search" color="white" size={24} style={styles.icon} />
-          <TextInput
-            style={styles.input}
-            placeholder={title}
-            placeholderTextColor="#aaa"
-          />
-        </View>
-        <MaterialIcons name="filter-alt" color="white" size={30} style={styles.filter} />
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <MaterialIcons name="search" color="white" size={20} style={styles.icon} />
+      <TextInput
+        style={styles.input}
+        placeholder={title}
+        placeholderTextColor="#aaa"
+        value={value}
+        onChangeText={onChangeText}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  safeArea: {
-    backgroundColor: "#000",
-    paddingHorizontal: 20,
-    paddingTop: 20,
-  },
-  filterRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
   container: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: "#fff",
-    borderRadius: 10,
+    borderRadius: 12,
     paddingHorizontal: 10,
     backgroundColor: "transparent",
-    height: 45,
+    height: 40,
     flex: 1,
   },
   icon: {
-    marginRight: 8,
+    marginRight: 6,
   },
   input: {
     color: "#fff",
     flex: 1,
-  },
-  filter: {
-    marginLeft: 10,
+    fontSize: 14,
   },
 });
 

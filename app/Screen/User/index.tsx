@@ -15,6 +15,10 @@ router.push('/Screen/Login')
 const RegisterBusines = () => {
   router.push('/Screen/BusinessRegister')
 }
+const CreateEvent = () => {
+  router.push('/Screen/CreateEvent')
+}
+
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -37,7 +41,7 @@ const RegisterBusines = () => {
 
         <InputProfile title="Meus ingressos" />
         <InputProfile title="Cadastre sua empresa" onPress={RegisterBusines}/>
-        <InputProfile title="Crie um evento" />
+        <InputProfile title="Crie um evento" onPress={CreateEvent}/>
       </ScrollView>
 
       <View style={styles.navContainer}>

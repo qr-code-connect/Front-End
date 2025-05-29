@@ -17,10 +17,11 @@ export default function Home() {
 
           <Text style={styles.Txt}>Ingressos</Text>
 
-          <InputMain title="Shows" onPress={() => router.push('/Screen/SeeEvents')} />
-          <InputMain title="Standup" />
-          <InputMain title="Jantares" />
-          <InputMain title="Baladas" />
+         <InputMain title="Shows" onPress={() => router.push({ pathname: '/Screen/SeeEvents', params: { type: 'Shows' } })} />
+          <InputMain title="Standup" onPress={() => router.push({ pathname: '/Screen/SeeEvents', params: { type: 'Standup' } })} />
+          <InputMain title="Jantares" onPress={() => router.push({ pathname: '/Screen/SeeEvents', params: { type: 'Jantares' } })} />
+          <InputMain title="Baladas" onPress={() => router.push({ pathname: '/Screen/SeeEvents', params: { type: 'Baladas' } })} />
+
         </ScrollView>
 
         <View style={styles.navContainer}>
